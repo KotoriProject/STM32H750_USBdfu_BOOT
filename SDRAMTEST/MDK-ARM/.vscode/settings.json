@@ -1,0 +1,18 @@
+{
+    "files.associations": {
+        "main.h": "c",
+        "usb_device.h": "c",
+        "usbd_dfu.h": "c",
+        "usbd_desc.h": "c",
+        "usbd_dfu_if.h": "c",
+        "gpio.h": "c",
+        "dma.h": "c",
+        "usart.h": "c",
+        "qspi_w25q64.h": "c",
+        "quadspi.h": "c",
+        "usbd_core.h": "c",
+        "usbd_def.h": "c",
+        "stm32h7xx_hal.h": "c",
+        "stm32h7xx.h": "c"
+    }
+}

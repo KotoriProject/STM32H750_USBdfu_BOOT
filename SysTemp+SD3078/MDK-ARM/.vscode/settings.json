@@ -1,0 +1,33 @@
+{
+    "files.associations": {
+        "ft5436.h": "c",
+        "lv_port_disp_template.h": "c",
+        "main.h": "c",
+        "ltdc.h": "c",
+        "lv_conf.h": "c",
+        "lv_port_indev_template.h": "c",
+        "lvgl.h": "c",
+        "math.h": "c",
+        "stm32h7xx.h": "c",
+        "stdint.h": "c",
+        "gt9xx.h": "c",
+        "gpio.h": "c",
+        "algorithm": "c",
+        "rs485.h": "c",
+        "usart.h": "c",
+        "lv_demos.h": "c",
+        "dmx.h": "c",
+        "stm32h7xx_hal.h": "c",
+        "atomic": "c",
+        "stc.h": "c",
+        "mylvgl.h": "c",
+        "lv_demo_widgets.h": "c",
+        "systemp.h": "c",
+        "tim.h": "c",
+        "soft_iic.h": "c",
+        "rtc_sd3078.h": "c",
+        "usbd_cdc_if.h": "c",
+        "circuqueue.h": "c"
+    },
+    "C_Cpp.default.compilerPath": ""
+}
