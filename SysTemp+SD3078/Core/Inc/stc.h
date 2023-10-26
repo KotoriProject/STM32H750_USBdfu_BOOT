@@ -3,7 +3,7 @@
 
 #include "stm32h7xx_hal.h"
 
-#define DMX_CHANNEL 256
+#define DMX_CHANNEL 512
 extern uint8_t dmx_buf[DMX_CHANNEL + 1];
 
 #define UART4_MAX_BUF 100

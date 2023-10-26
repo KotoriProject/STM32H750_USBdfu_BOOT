@@ -1,8 +1,100 @@
-*** Using Compiler 'V6.14', folder: 'D:\Keil_v5\ARM\ARMCLANG\Bin'
+*** Using Compiler 'V6.19', folder: 'D:\Keil_v5.38a\ARM\ARMCLANG\Bin'
 Build target 'H750IB'
-compiling fmc.c...
+../User/Vofa+.c(52): warning: incompatible pointer types passing 'struct JustFloat (*)[1024]' to parameter of type 'uint8_t *' (aka 'unsigned char *') [-Wincompatible-pointer-types]
+    CDC_Transmit_FS(&FRAME, (CH_COUNT * 4 + 4) * FRAME_POINT);
+                    ^~~~~~
+../USB_DEVICE/App\usbd_cdc_if.h(109): note: passing argument to parameter 'Buf' here
+  uint8_t CDC_Transmit_FS(uint8_t *Buf, uint16_t Len);
+                                   ^
+1 warning generated.
+compiling Vofa+.c...
+../USB_DEVICE/App/usbd_cdc_if.c(330): warning: passing 'volatile uint8_t[100]' (aka 'volatile unsigned char[100]') to parameter of type 'void *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+      SCB_InvalidateDCache_by_Addr(uart7_buf, UART7_MAX_BUF);      // 清除Dcache，让CPU直接从memory中读取
+                                   ^~~~~~~~~
+../Drivers/CMSIS/Include\core_cm7.h(2512): note: passing argument to parameter 'addr' here
+__STATIC_FORCEINLINE void SCB_InvalidateDCache_by_Addr (void *addr, int32_t dsize)
+                                                              ^
+../USB_DEVICE/App/usbd_cdc_if.c(331): warning: passing 'volatile uint8_t *' (aka 'volatile unsigned char *') to parameter of type 'uint8_t *' (aka 'unsigned char *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+      CDC_Transmit_FS(&uart7_buf[trans_pointer], wait2trans_size); //
+                      ^~~~~~~~~~~~~~~~~~~~~~~~~
+../USB_DEVICE/App/usbd_cdc_if.c(287): note: passing argument to parameter 'Buf' here
+uint8_t CDC_Transmit_FS(uint8_t *Buf, uint16_t Len)
+                                 ^
+../USB_DEVICE/App/usbd_cdc_if.c(337): warning: passing 'volatile uint8_t[100]' (aka 'volatile unsigned char[100]') to parameter of type 'void *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+      SCB_InvalidateDCache_by_Addr(uart7_buf, UART7_MAX_BUF);
+                                   ^~~~~~~~~
+../Drivers/CMSIS/Include\core_cm7.h(2512): note: passing argument to parameter 'addr' here
+__STATIC_FORCEINLINE void SCB_InvalidateDCache_by_Addr (void *addr, int32_t dsize)
+                                                              ^
+../USB_DEVICE/App/usbd_cdc_if.c(338): warning: passing 'volatile uint8_t *' (aka 'volatile unsigned char *') to parameter of type 'uint8_t *' (aka 'unsigned char *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+      CDC_Transmit_FS(&uart7_buf[trans_pointer], UART7_MAX_BUF - trans_pointer);
+                      ^~~~~~~~~~~~~~~~~~~~~~~~~
+../USB_DEVICE/App/usbd_cdc_if.c(287): note: passing argument to parameter 'Buf' here
+uint8_t CDC_Transmit_FS(uint8_t *Buf, uint16_t Len)
+                                 ^
+../USB_DEVICE/App/usbd_cdc_if.c(363): warning: passing 'volatile uint8_t[100]' (aka 'volatile unsigned char[100]') to parameter of type 'void *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+    SCB_InvalidateDCache_by_Addr(uart7_buf, UART7_MAX_BUF);                      // 因为是使用DMA接收数据，CPU读之前先清Dcache
+                                 ^~~~~~~~~
+../Drivers/CMSIS/Include\core_cm7.h(2512): note: passing argument to parameter 'addr' here
+__STATIC_FORCEINLINE void SCB_InvalidateDCache_by_Addr (void *addr, int32_t dsize)
+                                                              ^
+../USB_DEVICE/App/usbd_cdc_if.c(366): warning: passing 'volatile uint8_t *' (aka 'volatile unsigned char *') to parameter of type 'uint8_t *' (aka 'unsigned char *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+      CDC_Transmit_FS(&uart7_buf[trans_pointer], UART7_MAX_BUF - trans_pointer); // 发送未溢出部分
+                      ^~~~~~~~~~~~~~~~~~~~~~~~~
+../USB_DEVICE/App/usbd_cdc_if.c(287): note: passing argument to parameter 'Buf' here
+uint8_t CDC_Transmit_FS(uint8_t *Buf, uint16_t Len)
+                                 ^
+../USB_DEVICE/App/usbd_cdc_if.c(372): warning: passing 'volatile uint8_t *' (aka 'volatile unsigned char *') to parameter of type 'uint8_t *' (aka 'unsigned char *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+      CDC_Transmit_FS(&uart7_buf[trans_pointer], real_size);                     // 发送所有接受到的数据
+                      ^~~~~~~~~~~~~~~~~~~~~~~~~
+../USB_DEVICE/App/usbd_cdc_if.c(287): note: passing argument to parameter 'Buf' here
+uint8_t CDC_Transmit_FS(uint8_t *Buf, uint16_t Len)
+                                 ^
+7 warnings generated.
+compiling usbd_cdc_if.c...
+../Core/Src/main.c(95): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+  usb_printf("\r\n<BD><F8><D0><D0><CB>ٶȲ<E2><CA><D4>>>>\r\n");
+                  ^~~~~~~~~~~~~~~~~~~~  ~~~~~~~~~~~~
+../Core/Src/main.c(110): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+  usb_printf("\r\n<D2><D4>32λ<CA><FD><BE>ݿ<ED><B6><C8>д<C8><EB><CA><FD><BE>ݣ<AC><B4><F3>С<A3><BA>%d MB<A3><AC><BA><C4>ʱ: %d ms, д<C8><EB><CB>ٶȣ<BA>%.2f MB/s\r\n", SDRAM_Size / 1024 / 1024, ExecutionTime, ExecutionSpeed);
+                  ^~~~~~~~   ~~~~~~~~~~~~ ~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~ ~~~~~~~~     ~~~~~~~~~~~~~~~~           ~~~~~~~~~~~~  ~~~~
+../Core/Src/main.c(125): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+  usb_printf("\r\n<B6><C1>ȡ<CA><FD><BE><DD><CD><EA><B1>ϣ<AC><B4><F3>С<A3><BA>%d MB<A3><AC><BA><C4>ʱ: %d ms, <B6><C1>ȡ<CB>ٶȣ<BA>%.2f MB/s\r\n", SDRAM_Size / 1024 / 1024, ExecutionTime, ExecutionSpeed);
+                  ^~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~ ~~~~~~~~     ~~~~~~~~~~~~~~~~          ~~~~~~~~ ~~~~  ~~~~
+../Core/Src/main.c(132): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+  usb_printf("\r\n<BD><F8><D0><D0><CA><FD><BE><DD>У<D1><E9>>>>\r\n");
+                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~
+../Core/Src/main.c(140): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+      usb_printf("\r\nSDRAM<B2><E2><CA><D4>ʧ<B0>ܣ<A1><A3><A1>\r\n");
+                           ^~~~~~~~~~~~~~~~ ~~~~ ~~~~~~~~~~~~
+../Core/Src/main.c(146): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+  usb_printf("\r\n32λ<CA><FD><BE>ݿ<ED><B6>ȶ<C1>дͨ<B9><FD><A3><AC><D2><D4>8λ<CA><FD><BE>ݿ<ED><B6><C8>д<C8><EB><CA><FD><BE><DD>\r\n");
+                     ^~~~~~~~~~~~ ~~~~~~~~ ~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~  ~~~~~~~~~~~~ ~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c(152): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+  usb_printf("д<C8><EB><CD><EA><B1>ϣ<AC><B6><C1>ȡ<CA><FD><BE>ݲ<A2><B1>Ƚ<CF>...\r\n");
+               ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~ ~~~~~~~~~~~~ ~~~~~~~~ ~~~~
+../Core/Src/main.c(159): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+      usb_printf("8λ<CA><FD><BE>ݿ<ED><B6>ȶ<C1>д<B2><E2><CA><D4>ʧ<B0>ܣ<A1><A3><A1>\r\n");
+                    ^~~~~~~~~~~~ ~~~~~~~~ ~~~~ ~~~~~~~~~~~~~~~~ ~~~~ ~~~~~~~~~~~~
+../Core/Src/main.c(161): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+      usb_printf("<C7><EB><BC><EC><B2><E9>NBL0<BA><CD>NBL1<B5><C4><C1><AC><BD><D3>\r\n");
+                  ^~~~~~~~~~~~~~~~~~~~~~~~    ~~~~~~~~    ~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c(166): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+  usb_printf("8λ<CA><FD><BE>ݿ<ED><B6>ȶ<C1>дͨ<B9><FD>\r\n");
+                ^~~~~~~~~~~~ ~~~~~~~~ ~~~~ ~~~~~~~~
+../Core/Src/main.c(168): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+  usb_printf("SDRAM<B6><C1>д<B2><E2><CA><D4>ͨ<B9><FD><A3><AC>ϵͳ<D5><FD><B3><A3>\r\n");
+                   ^~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  ~~~~~~~~~~~~~~~~
+../Core/Src/main.c(274): warning: passing 'volatile uint8_t[100]' (aka 'volatile unsigned char[100]') to parameter of type 'uint8_t *' (aka 'unsigned char *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+  HAL_UARTEx_ReceiveToIdle_DMA(&ESP_UART, uart7_buf, UART7_MAX_BUF);
+                                          ^~~~~~~~~
+../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h(179): note: passing argument to parameter 'pData' here
+HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+                                                                                   ^
+12 warnings generated.
+compiling main.c...
 linking...
-Program Size: Code=37090 RO-data=1318 RW-data=572 ZI-data=10272  
+Program Size: Code=194120 RO-data=61000 RW-data=1224 ZI-data=338712  
 FromELF: creating hex file...
-"H750IB\H750IB.axf" - 0 Error(s), 0 Warning(s).
-Build Time Elapsed:  00:00:10
+"H750IB\H750IB.axf" - 0 Error(s), 20 Warning(s).
+Build Time Elapsed:  00:00:12

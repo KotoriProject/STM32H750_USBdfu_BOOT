@@ -39,13 +39,14 @@
 #include "lv_conf.h"
 #include "lv_port_disp_template.h"
 #include "lv_port_indev_template.h"
-#include "lv_demos.h"
+// #include "lv_demos.h"
 #include "mylvgl.h"
 #include "RS485.h"
 #include "DMX.h"
 #include "SysTemp.h"
 #include "stc.h"
 #include "RTC_SD3078.h"
+#include "Vofa+.h"
 
 #include "stdlib.h"
 /* USER CODE END Includes */
@@ -241,10 +242,10 @@ int main(void)
   MX_USB_DEVICE_Init();
   MX_DMA2D_Init();
   MX_FMC_Init();
-//  while (1)
-//  {
-//    SDRAM_Test();
-//  }
+  //  while (1)
+  //  {
+  //    SDRAM_Test();
+  //  }
   MX_LTDC_Init();
   MX_TIM14_Init();
   MX_ADC3_Init();
@@ -281,7 +282,9 @@ int main(void)
   }
   DMX_Init(&htim14);
   HAL_TIM_Base_Start_IT(&htim14);
+  Vofa_Fdata_Init();
 
+  
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -290,9 +293,9 @@ int main(void)
   {
     static uint16_t count = 0;
     lv_task_handler();
-    // HAL_Delay(5);
+    HAL_Delay(20);
     lv_timer_handler();
-
+    Vofa_CH_SEND();
     // HAL_ADC_Start(&hadc1);
     // HAL_ADC_PollForConversion(&hadc1, 10);
     // float vbat = (float)HAL_ADC_GetValue(&hadc1) / 0xFFFF * 3.3 * 2;

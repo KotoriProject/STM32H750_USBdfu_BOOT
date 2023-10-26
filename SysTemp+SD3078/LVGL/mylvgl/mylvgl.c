@@ -2,6 +2,9 @@
 
 #include "lvgl.h"
 #include "lv_conf.h"
+
+#define DMX_Controller_CH 64
+
 static void slider_event_cb(lv_event_t *e);
 static void btn_event_cb(lv_event_t *e);
 static void all_btn_event_cb(lv_event_t *e);
@@ -64,11 +67,11 @@ void mylv_DMX_Controller()
         lv_obj_t *bottom = lv_btn_create(panel2), *label = lv_label_create(bottom);
         lv_obj_set_size(bottom, 100, 50);
         lv_obj_center(label);
-        lv_obj_add_event_cb(bottom, btn_event_cb, LV_EVENT_CLICKED, i);
+        lv_obj_add_event_cb(bottom, btn_event_cb, LV_EVENT_CLICKED, (void *)i);
         lv_label_set_text_fmt(label, "%d~%d", i * 15 + 1, i * 15 + 15);
     }
 
-    for (uint16_t i = 0; i < 32; i++)
+    for (uint16_t i = 0; i < DMX_Controller_CH; i++)
     {
         lv_obj_t *cont = lv_obj_create(panel1);
         lv_obj_set_height(cont, 350);
@@ -135,7 +138,7 @@ static void slider_event_cb(lv_event_t *e)
     uint16_t channel = atoi(lv_label_get_text(lv_obj_get_child(lv_obj_get_parent(slider), -1)));
     if (channel == 0)
     {
-        for (uint16_t i = 0; i < 32; i++)
+        for (uint16_t i = 0; i < DMX_Controller_CH; i++)
         {
             lv_obj_t *cont = lv_obj_get_child(lv_obj_get_parent(lv_obj_get_parent(slider)), i + 1);
             lv_label_set_text_fmt(lv_obj_get_child(cont, 0), "%d%%", lv_slider_get_value(slider) * 100 / 255);
@@ -149,7 +152,7 @@ static void slider_event_cb(lv_event_t *e)
 
 static void btn_event_cb(lv_event_t *e)
 {
-    uint16_t botton_id = lv_event_get_user_data(e);
+    uint16_t botton_id = (uint16_t)lv_event_get_user_data(e);
     lv_obj_scroll_to_x(panel1, lv_obj_get_x(lv_obj_get_child(panel1, botton_id * 15 + 1)), LV_ANIM_ON); // 移动
 }
 

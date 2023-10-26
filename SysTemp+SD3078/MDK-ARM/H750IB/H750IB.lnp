@@ -288,6 +288,7 @@
 "h750ib\soft_iic.o"
 "h750ib\rtc_sd3078.o"
 "h750ib\circuqueue.o"
+"h750ib\vofa+.o"
 --strict --scatter "H750IB\H750IB.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

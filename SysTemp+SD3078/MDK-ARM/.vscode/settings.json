@@ -27,7 +27,8 @@
         "soft_iic.h": "c",
         "rtc_sd3078.h": "c",
         "usbd_cdc_if.h": "c",
-        "circuqueue.h": "c"
+        "circuqueue.h": "c",
+        "vofa+.h": "c"
     },
     "C_Cpp.default.compilerPath": ""
 }

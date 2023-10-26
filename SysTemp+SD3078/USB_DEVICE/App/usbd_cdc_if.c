@@ -25,6 +25,7 @@
 #include "main.h"
 #include "stc.h"
 #include "usart.h"
+#include "Vofa+.h"
 /* USER CODE END INCLUDE */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -317,6 +318,7 @@ static int8_t CDC_TransmitCplt_FS(uint8_t *Buf, uint32_t *Len, uint8_t epnum)
   UNUSED(Buf);
   UNUSED(Len);
   UNUSED(epnum);
+  Vofa_CH_SEND_Cplt();
   if (wait2trans_size == 0)
   {
     USB_Trans_Flag = 0;

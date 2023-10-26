@@ -3,17 +3,17 @@ h750ib/lv_gpu_stm32_dma2d.o: \
   ..\LVGL\src\draw\stm32_dma2d\lv_gpu_stm32_dma2d.h \
   ..\LVGL\src\draw\stm32_dma2d\..\..\misc\lv_color.h \
   ..\LVGL\src\draw\stm32_dma2d\..\..\misc\..\lv_conf_internal.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
+  D:\Keil_v5.38a\ARM\ARMCLANG\Bin\..\include\stdint.h \
   ..\LVGL\src\lv_conf_kconfig.h ..\LVGL\lv_conf.h \
   ..\LVGL\src\draw\stm32_dma2d\..\..\misc\lv_assert.h \
   ..\LVGL\src\draw\stm32_dma2d\..\..\misc\lv_log.h \
   ..\LVGL\src\draw\stm32_dma2d\..\..\misc\lv_types.h \
   ..\LVGL\src\draw\stm32_dma2d\..\..\misc\lv_mem.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
+  D:\Keil_v5.38a\ARM\ARMCLANG\Bin\..\include\stddef.h \
+  D:\Keil_v5.38a\ARM\ARMCLANG\Bin\..\include\string.h \
   ..\LVGL\src\draw\stm32_dma2d\..\..\misc\lv_math.h \
   ..\LVGL\src\draw\stm32_dma2d\..\..\hal\lv_hal_disp.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
+  D:\Keil_v5.38a\ARM\ARMCLANG\Bin\..\include\stdbool.h \
   ..\LVGL\src\draw\stm32_dma2d\..\..\hal\lv_hal.h \
   ..\LVGL\src\draw\stm32_dma2d\..\..\hal\lv_hal_indev.h \
   ..\LVGL\src\draw\stm32_dma2d\..\..\hal\..\lv_conf_internal.h \
@@ -31,9 +31,9 @@ h750ib/lv_gpu_stm32_dma2d.o: \
   ..\LVGL\src\draw\stm32_dma2d\..\..\misc\lv_area.h \
   ..\LVGL\src\draw\stm32_dma2d\..\..\misc\lv_anim.h \
   ..\LVGL\src\draw\stm32_dma2d\..\..\misc\lv_txt.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
+  D:\Keil_v5.38a\ARM\ARMCLANG\Bin\..\include\stdarg.h \
   ..\LVGL\src\draw\stm32_dma2d\..\..\misc\lv_printf.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\inttypes.h \
+  D:\Keil_v5.38a\ARM\ARMCLANG\Bin\..\include\inttypes.h \
   ..\LVGL\src\draw\stm32_dma2d\..\..\misc\lv_bidi.h \
   ..\LVGL\src\draw\stm32_dma2d\..\..\misc\lv_style_gen.h \
   ..\LVGL\src\draw\stm32_dma2d\..\..\hal\..\draw\..\misc\lv_txt.h \
